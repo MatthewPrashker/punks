@@ -8,7 +8,7 @@ import "solmate/tokens/ERC20.sol";
 import "solmate/tokens/ERC721.sol";
 import "solmate/tokens/ERC1155.sol";
 
-import "../../contracts/Example.sol";
+import "../../contracts/ILooksRare.sol";
 
 contract TestExample is Test {
     address internal immutable nftAddr =
@@ -16,6 +16,9 @@ contract TestExample is Test {
 
     address internal immutable punkVTokenAddr =
         0x269616D549D7e8Eaa82DFb17028d0B212D11232A;
+
+    address internal immutable looksRareExchangeAddr =
+        0x59728544B08AB483533076417FbBB2fD0B17CE3a;
 
     function setUp() public payable {}
 
@@ -32,5 +35,13 @@ contract TestExample is Test {
             "Number of punks inside the vault at this time",
             punkVToken.totalSupply() / (10**18)
         );
+    }
+
+    function testLooksRare() public {
+        ILooksRareExchange exchange = ILooksRareExchange(looksRareExchangeAddr);
+
+        // OrderTypes.MakerOrder memory purchaseOrder = OrderTypes.MakerOrder({
+
+        // });
     }
 }
