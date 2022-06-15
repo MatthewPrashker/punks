@@ -27,20 +27,25 @@ interface IWETH {
 contract Exe {
     address user;
     address WETH_Addr = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
-    address BAYC_Addr = 0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D;
     IWETH wETH = IWETH(WETH_Addr);
-    ILooksRareExchange exchange;
 
-    constructor(address exchangeAddr) {
+    ILooksRareExchange exchange;
+    address internal nftTokenAddr;
+
+    constructor(address exchangeAddr, address _nftTokenAddr) {
         user = msg.sender;
+        nftTokenAddr = _nftTokenAddr;
         exchange = ILooksRareExchange(exchangeAddr);
         wETH.approve(address(exchange), type(uint256).max);
-        ERC721(BAYC_Addr).setApprovalForAll(address(exchange), true);
+        //ERC721(BAYC_Addr).setApprovalForAll(address(exchange), true);
     }
 
     function gogo(OrderTypes.MakerOrder calldata sellOrder) external {
         wETH.deposit{value: address(this).balance}();
         console.log(wETH.balanceOf(address(this)));
+
+        console.log("Buying nft", sellOrder.tokenId, "for", sellOrder.price);
+
         OrderTypes.TakerOrder memory takerBid = OrderTypes.TakerOrder({
             isOrderAsk: false,
             taker: address(this),
@@ -59,6 +64,10 @@ contract Exe {
         bytes memory
     ) public returns (bytes4) {
         console.log("Received token");
+        console.log(
+            "nfts owned: ",
+            ERC721(nftTokenAddr).balanceOf(address(this))
+        );
         return 0x150b7a02;
     }
 
