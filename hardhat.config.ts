@@ -26,7 +26,10 @@ const config: HardhatUserConfig = {
   },
   networks: {
     hardhat: {
-      blockGasLimit: 30_000_000,
+      forking: {
+        url: 'https://mainnet.infura.io/v3/3100bfdb825c4a29bdc7962c7626117c',
+        blockNumber: 14969101,
+      },
     },
   },
   gasReporter: {

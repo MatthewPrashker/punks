@@ -11,7 +11,7 @@ function getBestBid(bidOrders) {}
 
 function getBestAsks(askOrders) {}
 
-async function getOpenOrders(nftAddr) {
+export async function getOpenOrders(nftAddr) {
   let openBids = []
   let openAsks = []
 
@@ -66,4 +66,4 @@ async function main() {
   console.log(openBids[0], openBids[openBids.length - 1])
 }
 
-main()
+//main()

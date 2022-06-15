@@ -2,7 +2,7 @@
 pragma solidity 0.8.13;
 
 import "forge-std/Test.sol";
-import "forge-std/console2.sol";
+import "forge-std/console.sol";
 
 import "solmate/tokens/ERC20.sol";
 import "solmate/tokens/ERC721.sol";
@@ -39,9 +39,5 @@ contract TestExample is Test {
 
     function testLooksRare() public {
         ILooksRareExchange exchange = ILooksRareExchange(looksRareExchangeAddr);
-
-        // OrderTypes.MakerOrder memory purchaseOrder = OrderTypes.MakerOrder({
-
-        // });
     }
 }

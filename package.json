@@ -58,9 +58,13 @@
     "*.ts": "prettier --write"
   },
   "dependencies": {
+    "@rari-capital/solmate": "^6.4.0",
     "@typechain/ethers-v5": "^10.0.0",
     "@typechain/hardhat": "^6.0.0",
     "axios": "^0.27.2",
+    "forge-std": "^1.0.2",
+    "i": "^0.3.7",
+    "npm": "^8.12.1",
     "typechain": "^8.0.0"
   },
   "private": "false",
