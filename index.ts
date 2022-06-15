@@ -20,6 +20,10 @@ async function getOpenOrders(nftAddr) {
     collection: nftAddr,
     currency: WETH_Addr,
     status: ['VALID'],
+    pagination: {
+      first: 150,
+    },
+    sort: 'NEWEST',
   }
 
   const askRequestParams = {
@@ -27,6 +31,10 @@ async function getOpenOrders(nftAddr) {
     collection: nftAddr,
     currency: WETH_Addr,
     status: ['VALID'],
+    pagination: {
+      first: 150,
+    },
+    sort: 'NEWEST',
   }
 
   await axios
@@ -51,9 +59,11 @@ async function getOpenOrders(nftAddr) {
 }
 
 async function main() {
-  const nftAddr = '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D' //BAYC address
-  const [openBids, openAsks] = await getOpenOrders(nftAddr)
-  console.log(openBids)
+  const BAYC_Addr = '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'
+  const GOBLIN_Addr = '0xbCe3781ae7Ca1a5e050Bd9C4c77369867eBc307e'
+
+  const [openBids, openAsks] = await getOpenOrders(GOBLIN_Addr)
+  console.log(openBids[0], openBids[openBids.length - 1])
 }
 
 main()
