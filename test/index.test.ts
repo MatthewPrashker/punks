@@ -1,5 +1,5 @@
 import hre from 'hardhat'
-import { getOpenOrders } from '../looksRare'
+import { getOpenOrders } from '../scripts/looksRare'
 import assert from 'assert'
 
 describe('Hardhat Runtime Environment', function () {
@@ -23,7 +23,7 @@ describe('Hardhat Runtime Environment', function () {
     console.log(exe.address)
     const makerAsk = await getOpenOrders(nftAddr).then((res) => {
       console.log(res['strategy'])
-      return res[1][0]
+      return res[1][3]
     })
     //console.log(makerAsk);
     //console.log(makerAsk['price']);
